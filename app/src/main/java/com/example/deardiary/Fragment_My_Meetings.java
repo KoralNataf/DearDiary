@@ -58,9 +58,9 @@ public class Fragment_My_Meetings extends Fragment_Base {
                 try {
                     allMeetings.remove(position);
                     my_meetings_LST_all_meetings.removeViewAt(position);
-                    adapter_meeting.notifyItemRemoved(position);
                     saveAllMeetings_SP();
                     adapter_meeting.readAllMeetings_SP();
+                    adapter_meeting.notifyItemRemoved(position);
                     adapter_meeting.notifyItemRangeChanged(position, allMeetings.getAllMeetings().size());
                 }catch (Exception e){
                 }

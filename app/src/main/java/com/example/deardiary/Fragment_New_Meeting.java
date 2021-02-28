@@ -144,44 +144,49 @@ public class Fragment_New_Meeting extends Fragment_Base {
             public void onClick(View v) {
                 String subject = new_meeting_EDT_subject.getText().toString();
                 String date = new_meeting_LBL_date.getText().toString();
-                String timeStart=new_meeting_LBL_time.getText().toString();
+                String timeStart = new_meeting_LBL_time.getText().toString();
                 String duration = new_meeting_EDT_duration.getText().toString();
                 String description = new_meeting_EDT_description.getEditText().getText().toString();
                 String city = new_meeting_EDT_city.getText().toString();
                 String street = new_meeting_EDT_street.getText().toString();
                 String number = new_meeting_EDT_number.getText().toString();
 
-                if (TextUtils.isEmpty(subject) ||TextUtils.isEmpty(duration) || TextUtils.isEmpty(city) || TextUtils.isEmpty(street) || TextUtils.isEmpty(number) ) {
+                if (TextUtils.isEmpty(subject) ||TextUtils.isEmpty(duration) || TextUtils.isEmpty(city) || TextUtils.isEmpty(street) || TextUtils.isEmpty(number) )
+                {
                     Toast.makeText(getContext(), "Please Fill All Fields", Toast.LENGTH_SHORT).show();
                     toast=true;
+                    return;
                 }
-                else if(date.equals(getContext().getString(R.string.date_format)) || timeStart.equals(getContext().getString(R.string.time_format))) {
+                else if (date.equals(getString(R.string.date_format)) || timeStart.equals(getString(R.string.time_format))){
                     Toast.makeText(getContext(), "Date And Time Can Not Be Empty..", Toast.LENGTH_SHORT).show();
-                   toast=true;
+                    toast=true;
+                    return;
                 }
 
-                int num =-1;
                 double durationNum=-1;
-                try{
+                int num=-1;
+                try {
                     durationNum = Double.parseDouble(duration);
                     num = Integer.parseInt(number);
                 }catch (NumberFormatException e){
-                    if(!toast)
-                        Toast.makeText(getContext(), "Duration And Location Number Must Be Numbers ..", Toast.LENGTH_SHORT).show();
-                    toast=false;
+                    if(!toast){
+                        Toast.makeText(getContext(), "Duration And Location Number Must Be A Numbers..", Toast.LENGTH_SHORT).show();
+                        toast=false;
+                    }
                     return;
                 }
-                Meeting meeting= new Meeting(subject,date,description,new Address(city,street,num),timeStart,durationNum);
-               readAllMeetings_SP();
-               if(!allMeetings.add(meeting))
-                   Toast.makeText(getContext(), "Can Not Create A New Meeting ..\n This Time Is Not Available!", Toast.LENGTH_SHORT).show();
-               else {
-                   saveAllMeetings_SP();
-                   if(callBack!=null)
-                       callBack.updateList();
-                   Toast.makeText(getContext(), "Meeting Crated Successfully!", Toast.LENGTH_SHORT).show();
-               }
-               clearAllFields();
+
+                Meeting meeting = new Meeting(subject,date, description, new Address(city,street,num),timeStart, durationNum);
+                readAllMeetings_SP();
+                if(!allMeetings.add(meeting))
+                    Toast.makeText(getContext(), "Can Not Create A New Meeting..\nThis Time Is Not Available! ", Toast.LENGTH_SHORT).show();
+                else{
+                    saveAllMeetings_SP();
+                    if(callBack != null)
+                        callBack.updateList();
+                    Toast.makeText(getContext(), "Meeting Created Successfully ", Toast.LENGTH_SHORT).show();
+                }
+                clearAllFields();
 
             }
         });
