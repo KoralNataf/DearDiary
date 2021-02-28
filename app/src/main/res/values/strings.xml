@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DearDiary</string>
+    <string name="date_format">"DD/MM/YYYY "</string>
+    <string name="time_format">"HH:mm  "</string>
+    <string name="edit_format">"Edit  "</string>
+    <string name="save_format">"Save  "</string>
+</resources>

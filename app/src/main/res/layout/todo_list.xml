@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="20dp"
+    android:layout_margin="8dp"
+    android:elevation="6dp"
+    app:cardElevation="6dp"
+    >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/movie_list_color"
+        android:padding="5dp">
+
+
+        <CheckBox
+            android:id="@+id/todo_list_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:onClick="onCheckboxClicked"/>
+
+        <EditText
+            android:id="@+id/todo_list_EDT_task"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/todo_list_BTN_save"
+            android:layout_toEndOf="@id/todo_list_checkbox"
+            android:hint="New task"
+            android:ems="12"
+            android:elegantTextHeight="true"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:layout_centerInParent="true"/>
+
+        <TextView
+            android:id="@+id/todo_list_BTN_remove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="3dp"
+            android:text="  "
+            android:drawableLeft="@drawable/remove"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="2dp"
+            android:background="@drawable/bg_btn"
+            android:elegantTextHeight="true"
+            android:paddingLeft="15dp"
+            android:textColor="@color/btn_color"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/todo_list_BTN_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="3dp"
+            android:layout_gravity="center"
+            android:text="@string/save_format"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/todo_list_BTN_remove"
+            android:background="@drawable/bg_btn"
+            android:elegantTextHeight="true"
+            android:paddingLeft="15dp"
+            android:textColor="@color/btn_color"
+            android:textSize="18dp" />
+
+
+    </RelativeLayout>
+
+
+</com.google.android.material.card.MaterialCardView>
